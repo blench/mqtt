@@ -1,0 +1,37 @@
+com:
+  mqtt:
+    inbound:
+      url: tcp://127.0.0.1:1883
+      clientId: familyServerIn
+      topics: hello,topic
+    outbound:
+      urls: tcp://127.0.0.1:1883
+      clientId: familyServerOut
+      topic: topic1
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtualHost: /
+  listener:
+    concurrency: 2
+    max-concurrency: 2
+  main:
+    web-application-type: none
+  mqtt:
+    username: admin
+    #MQTT-密码
+    password: admin
+    #MQTT-服务器连接地址，如果有多个，用逗号隔开，如：tcp://127.0.0.1:61613，tcp://192.168.2.133:61613
+    url: tcp://127.0.0.1:1883
+    #MQTT-连接服务器默认客户端ID
+    client:
+      id: mqttId
+    #MQTT-默认的消息推送主题，实际可在调用接口时指定
+    default:
+      topic: topic
+    #连接超时
+    completionTimeout: 3000
